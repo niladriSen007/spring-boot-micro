@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/micro_ecom_product
+  application:
+    name: product-service
+server:
+  port: 5000
