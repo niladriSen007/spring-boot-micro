@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "order_item")
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
   private Long productId;
   private Long quantity;

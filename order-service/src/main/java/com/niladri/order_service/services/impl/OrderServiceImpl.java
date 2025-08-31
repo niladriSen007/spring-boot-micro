@@ -2,26 +2,39 @@ package com.niladri.order_service.services.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.niladri.order_service.entity.Order;
+import com.niladri.order_service.repository.OrderRepository;
 import com.niladri.order_service.services.IOrderService;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements IOrderService {
 
+  private final OrderRepository orderRepository;
+
   @Override
-  public void createOrder(Order order) {
-    // Implementation here
+  public Order createOrder(Order order) {
+    Order newOrder = Order
+        .builder()
+        .totalPrice(order.getTotalPrice())
+        .orderStatus(order.getOrderStatus())
+        .items(order.getItems())
+        .build();
+    return orderRepository.save(newOrder);
   }
 
   @Override
   public Order getOrderById(Long id) {
-    // Implementation here
-    return null;
+    return orderRepository.findById(id).orElse(null);
   }
 
   @Override
   public List<Order> getAllOrders() {
-    // Implementation here
-    return null;
+    return orderRepository.findAll();
   }
 
   @Override

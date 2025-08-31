@@ -4,5 +4,17 @@ spring:
       uri: mongodb://localhost:27017/micro_ecom_product
   application:
     name: product-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
 server:
   port: 5000
+  servlet:
+    context-path: /products

@@ -5,7 +5,7 @@ import java.util.List;
 import com.niladri.order_service.entity.Order;
 
 public interface IOrderService {
-  void createOrder(Order order);
+  Order createOrder(Order order);
   Order getOrderById(Long id);
   List<Order> getAllOrders();
   void updateOrder(Long id, Order order);
