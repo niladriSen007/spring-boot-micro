@@ -12,6 +12,7 @@ spring:
                 - Path=/api/v1/products/**
               filters:
                 - StripPrefix=2
+                - name: LoggingSpecificFilter
             - id: order-service
               uri: lb://ORDER-SERVICE
               predicates:
