@@ -19,6 +19,8 @@ spring:
                 - Path=/api/v1/orders/**
               filters:
                 - StripPrefix=2
+                - name: LoggingSpecificFilter
+                - name: AuthenticationFilter
   main:
     allow-bean-definition-overriding: true
 eureka:
@@ -32,4 +34,5 @@ eureka:
 
 server:
   port: 6000
-
+jwt:
+  secretKey: dfnvghgjdfvdfhjgfvhjsdgfcvsdhjgcfsghc

@@ -1,5 +1,8 @@
 package com.niladri.product_service.controllers;
 
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,8 +30,11 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/core")
 @RequiredArgsConstructor
 @Slf4j
+@RefreshScope
 public class ProductController {
 
+    @Value("${my.variable}")// Fetching property from Config Server
+    private String message;
   private final IProductService productService;
   /*
    * private final DiscoveryClient discoveryClient;
@@ -36,6 +42,7 @@ public class ProductController {
    */
 
   private final OrderFeignClient orderFeignClient;
+
 
   @PostMapping("/")
   @ResponseStatus(HttpStatus.CREATED)
@@ -60,5 +67,10 @@ public class ProductController {
 
     return orderFeignClient.helloOrders();
   }
+
+    @GetMapping("/config")
+    public String getConfigMessage() {
+        return "Config Message: " + message;
+    }
 
 }

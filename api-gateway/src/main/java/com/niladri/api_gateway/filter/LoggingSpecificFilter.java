@@ -22,7 +22,7 @@ public class LoggingSpecificFilter extends AbstractGatewayFilterFactory<LoggingS
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
-         log.info("Logging from specific pre: {}", exchange.getRequest().getURI());
+            log.info("Logging from specific pre: {}", exchange.getRequest().getURI());
             return chain.filter(exchange);
         });
     }

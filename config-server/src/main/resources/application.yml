@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/niladriSen007/config-server
+          username: niladriSen007
+          password: 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
+          default-label: main
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
